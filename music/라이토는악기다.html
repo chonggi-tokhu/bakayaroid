@@ -189,9 +189,6 @@
                     <button onclick="change_instrument()">악기 종류 바꾸기</button>
                 </div>
             </div>
-            <div class=" guest_profile_wrapper" style="position:absolute;text-align:center;width:100%;">
-                <p class="guest_profile"><a href="https://www.youtube.com/@chaco_calculator"><img width="325"></a></p>
-            </div>
             <div class="sheet loading" id="sheet">
                 <!--<div class="key white" data-piano-code="C4" data-keyboard-key="a"></div>
                 <div class="key black" data-piano-code="C#4" data-keyboard-key="w"></div>
@@ -1154,24 +1151,7 @@
             document.querySelector('.sheet').style.setProperty('--scaleX', window.innerWidth / document.querySelector('.piano_wrapper').clientWidth);
             document.querySelector('.sheet').style.setProperty('--new-width', document.querySelector('.piano_wrapper').clientWidth + 'px');
         });
-        forchaco.addEventListener("change", function (ev) {
-            if (forchaco.checked) {
-                /*setBG('https://yt3.googleusercontent.com/ytc/AIdro_nkqBgHYalGfrq-BV9y5kRmb1Wuq-Tdx6sOocYcQA=s176-c-k-c0x00ffffff-no-rj');
-                document.querySelector('.sheet').style.backgroundSize='30%';
-                document.querySelector('.sheet').style.backgroundPosition='35%';
-                document.querySelector('.sheet').style.backgroundColor='#2f3e4d';
-                document.querySelector('.sheet').style.backgroundRepeat='no-repeat';*/
-                document.querySelector('.guest_profile img').setAttribute('src', 'https://yt3.googleusercontent.com/ytc/AIdro_nkqBgHYalGfrq-BV9y5kRmb1Wuq-Tdx6sOocYcQA=s176-c-k-c0x00ffffff-no-rj');
-            } else {
-                /*setBG(false);
-                document.querySelector('.sheet').style.backGroundSize='';
-                document.querySelector('.sheet').style.backgroundSize='';
-                document.querySelector('.sheet').style.backgroundPosition='';
-                document.querySelector('.sheet').style.backgroundColor='';
-                document.querySelector('.sheet').style.backgroundRepeat='';*/
-                document.querySelector('.guest_profile img').setAttribute('src', '');
-            }
-        }); const displayMediaOptions = {
+        const displayMediaOptions = {
             video: {
                 displaySurface: "tab",
             },
