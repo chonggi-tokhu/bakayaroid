@@ -854,12 +854,12 @@
         }
         function showraito(img, pitch, start, dur) {
             window.setTimeout(() => {
-                var newimage = new Image();
+                var newimage = new Image(5, 5);
                 newimage.src = img;
                 konabananas[pitch] = document.querySelector(`.keys .key[data-piano-code="${pitch}"]`)?.appendChild(newimage);
                 pieces_of_kakaobutter[pitch] = 0;
                 kakaobutter_animation((param) => { if (pieces_of_kakaobutter[pitch] < dur / 30) { return true; }; pieces_of_kakaobutter[pitch] = null; return false; }, () => { increase_kakaobutter(pitch); konabananas[pitch].style.width = (getComputedStyle(konabananas[pitch]).width + 10) + 'px'; konabananas[pitch].style.height = (getComputedStyle(konabananas[pitch]).height + 10) + 'px'; })
-                document.querySelector('.sheet').style.backgroundImage = `url(../files/라이토군1.gif);`;
+                document.querySelector('.sheet').style.backgroundImage = `url(../files/라이토군0.gif);`;
             }, start);
             window.setTimeout(() => { konabananas[pitch].src = "../files/라이토군2.gif"; }, start + dur * 0.75);
             window.setTimeout(() => { konabananas[pitch]?.remove(); document.querySelector('.sheet').style.backgroundImage = ''; }, start + dur);
@@ -873,7 +873,7 @@
                 var thisnote = song.tracks[track].notes[idx];
                 var instrument0 = instruments[instrumentid];
                 console.log(thisnote.when * 1000 * (_1Minute / _PIANOTEMPO));
-                showraito('../files/라이토군0.gif', pitchnumbers[thisnote.pitch], thisnote.when * 1000 * (_1Minute / _PIANOTEMPO), (thisnote.duration * 1000));
+                showraito('../files/라이토군1.gif', pitchnumbers[thisnote.pitch], thisnote.when * 1000 * (_1Minute / _PIANOTEMPO), (thisnote.duration * 1000));
                 window.setTimeout(function () {
                     var newplaying = instrument0.play(pitchnumbers[thisnote.pitch], 0, { sustain: (sustainparam) ? 8 : 0.9 });
                     bool2 = false;
