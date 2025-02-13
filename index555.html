@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>player</title>
+    <script src="./midijs/midiplayer.js"></script>
+    <script src="./soundfont-player-js/player.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script
+        src="https://chonggi-tokhu.github.io/svg_to_video/google_translate_meme_maker/ColourgreyShorterCSSJS.js"></script>
+    <link rel="stylesheet"
+        href="https://chonggi-tokhu.github.io/svg_to_video/google_translate_meme_maker/ColourgreyShorter.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        :root {
+            --sum-2-left: 1;
+            --old-width: calc((59em) / 0.695);
+        }
+
+        .keys {
+            display: flex;
+        }
+
+        .keys .key.white {
+            height: 12em;
+            width: 3em;
+            position: relative;
+            background: #e0e8f0;
+            border: 1px solid #051315;
+            color: #051315;
+            z-index: 10;
+        }
+
+        .keys .key.black {
+            height: 6em;
+            width: 2em;
+            position: absolute;
+            background: #051315;
+            border-left: 1px solid #e0e8f0;
+            border-right: 1px solid #e0e8f0;
+            border-bottom: 1px solid #051315;
+            z-index: 20;
+            color: #e0e8f0;
+        }
+
+        .keys .key p {
+            position: relative;
+            bottom: calc(4em - 100%);
+        }
+
+        .piano {
+            border: 1rem solid #623421;
+            width: min-content;
+            --scaleX: calc(1vw / 1em);
+            --new-width: 100vw;
+            --new-height: 0vh;
+            transform: scale(var(--scaleX)) translate(calc(100vw - var(--old-width)), 2.5em);
+        }
+
+        .piano_wrapper {
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .sheet {
+            width: 100%;
+            height: 45vh;
+            border: 1rem solid #623421;
+            display: flex;
+        }
+
+        .loading::after {
+            content: 'LOADING...';
+            font-size: 480%;
+            text-align: center;
+            width: 100%;
+        }
+
+        .white.highlight {
+            background: #80a0e0 !important;
+        }
+
+        .black.highlight {
+            background: #204070 !important;
+        }
+        .guest_profile img[src=''] {
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="icon-narairumhan2"></div>
+
+</body>
+
+</html>
