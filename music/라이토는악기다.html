@@ -99,7 +99,7 @@
             height: 12em;
             border: 1rem solid #623421;
             display: flex;
-            width: min-content;
+            width: inherit;
             --scaleX: calc(1vw / 1em);
             --new-width: 100vw;
             --new-height: 0vh;
@@ -148,6 +148,10 @@
 
         .guest_profile img[src=''] {
             display: none;
+        }
+
+        #music.music {
+            width: fit-content;
         }
     </style>
 </head>
