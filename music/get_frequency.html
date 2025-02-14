@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <audio src="../FluidR3_GM/light_yagami-mp3/C4.mp3" controls></audio>
+    <audio src="../FluidR3_GM/light_yagami-mp3/C4.mp3" controls loop></audio>
     <h1>Frequency (Hz)</h1>
     <h2 id="frequency">0.0</h2>
     <div>
@@ -19,8 +19,8 @@
         let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         let microphoneStream = null;
         let analyserNode = audioCtx.createAnalyser();
-        let audioData = new Float32Array(analyserNode.fftSize);;
-        let corrolatedSignal = new Float32Array(analyserNode.fftSize);;
+        let audioData = new Float32Array(analyserNode.fftSize);
+        let corrolatedSignal = new Float32Array(analyserNode.fftSize);
         let localMaxima = new Array(10);
         const frequencyDisplayElement = document.querySelector('#frequency');
 
