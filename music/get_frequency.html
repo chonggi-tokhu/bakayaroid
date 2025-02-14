@@ -24,7 +24,6 @@
         var localMaxima = new Array(10);
         const frequencyDisplayElement = document.querySelector('#frequency');
         function init() {
-
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             microphoneStream = null;
             analyserNode = audioCtx.createAnalyser();
@@ -33,10 +32,10 @@
         }
         function startPitchDetection() {
             init();
-            /* 
+
             var stream = document.getElementsByTagName("audio")[0].captureStream(60);
-            console.log(stream); */
-            microphoneStream = audioCtx.createMediaElementSource(document.getElementsByTagName("audio")[0]);
+            console.log(stream);
+            microphoneStream = audioCtx.createMediaStreamSource(stream);
             microphoneStream.connect(analyserNode);
 
             audioData = new Float32Array(analyserNode.fftSize);
