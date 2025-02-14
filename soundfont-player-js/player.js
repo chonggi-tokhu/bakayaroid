@@ -71,8 +71,16 @@
                 function nameToUrl(name, sf, format) {
                     format = format === "ogg" ? format : "mp3";
                     sf = sf === "FluidR3_GM" ? sf : "MusyngKite";
-                    return (
+                    return name === "light_yagami" ? (
                         "https://chonggi-tokhu.github.io/bakayaroid/" +
+                        sf +
+                        "/" +
+                        name +
+                        "-" +
+                        format +
+                        ".js"
+                    ) : (
+                        "https://chonggi-tokhu.github.io/midi-js-soundfonts/" +
                         sf +
                         "/" +
                         name +
