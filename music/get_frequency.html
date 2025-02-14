@@ -24,9 +24,9 @@
         let localMaxima = new Array(10);
         const frequencyDisplayElement = document.querySelector('#frequency');
 
-        function startPitchDetection() {
+        function startPitchDetection() {/* 
             var stream = document.getElementsByTagName("audio")[0].captureStream(60);
-            console.log(stream);
+            console.log(stream); */
             microphoneStream = audioCtx.createMediaElementSource(document.getElementsByTagName("audio")[0]);
             microphoneStream.connect(analyserNode);
 
