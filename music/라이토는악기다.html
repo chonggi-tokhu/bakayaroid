@@ -894,7 +894,7 @@
                 newimage.src = img;
                 konabananas[pitch] = document.querySelector(`.keys .key[data-piano-code="${pitch}"]`)?.appendChild(newimage);
                 pieces_of_kakaobutter[pitch] = 0;
-                kakaobutter_animation((param) => { if (pieces_of_kakaobutter[pitch] < dur / 30) { return true; }; pieces_of_kakaobutter[pitch] = null; return false; }, () => { increase_kakaobutter(pitch); konabananas[pitch].style.width = (parseFloat(getComputedStyle(konabananas[pitch]).width) + 7.5) + 'px'; konabananas[pitch].style.height = (parseFloat(getComputedStyle(konabananas[pitch]).height) + 7.5) + 'px'; konabananas[pitch].style.left = (parseFloat(getComputedStyle(konabananas[pitch]).width) / -2) + 'px'; konabananas[pitch].style.top = (parseFloat(getComputedStyle(konabananas[pitch]).height) / -2) + 'px'; })
+                kakaobutter_animation((param) => { if (pieces_of_kakaobutter[pitch] < dur / 30) { return true; }; pieces_of_kakaobutter[pitch] = null; konabananas[pitch]?.remove(); return false; }, () => { increase_kakaobutter(pitch); konabananas[pitch].style.width = (parseFloat(getComputedStyle(konabananas[pitch]).width) + 7.5) + 'px'; konabananas[pitch].style.height = (parseFloat(getComputedStyle(konabananas[pitch]).height) + 7.5) + 'px'; konabananas[pitch].style.left = (parseFloat(getComputedStyle(konabananas[pitch]).width) / -2) + 'px'; konabananas[pitch].style.top = (parseFloat(getComputedStyle(konabananas[pitch]).height) / -2) + 'px'; })
                 document.querySelector('.sheet').style.backgroundImage = `url('../files/라이토군0.gif')`;
             }, start);
             window.setTimeout(() => { konabananas[pitch].src = "../files/라이토군2.gif"; }, start + dur * 0.75);
