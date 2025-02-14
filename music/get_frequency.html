@@ -25,7 +25,8 @@
         const frequencyDisplayElement = document.querySelector('#frequency');
 
         function startPitchDetection() {
-            var stream = document.getElementsByTagName("audio")[0].captureStream();
+            var stream = document.getElementsByTagName("audio")[0].captureStream(60);
+            console.log(stream);
             microphoneStream = audioCtx.createMediaStreamSource(stream);
             microphoneStream.connect(analyserNode);
 
