@@ -71,7 +71,7 @@
                 function nameToUrl(name, sf, format) {
                     format = format === "ogg" ? format : "mp3";
                     sf = sf === "FluidR3_GM" ? sf : "MusyngKite";
-                    return name === "light_yagami" ? (
+                    return name.includes("yagami") ? (
                         "https://chonggi-tokhu.github.io/bakayaroid/" +
                         sf +
                         "/" +
