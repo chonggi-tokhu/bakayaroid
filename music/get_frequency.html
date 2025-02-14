@@ -16,7 +16,7 @@
         </button>
     </div>
     <script>
-        let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let audioCtx = null;
         let microphoneStream = null;
         let analyserNode = audioCtx.createAnalyser();
         let audioData = new Float32Array(analyserNode.fftSize);
@@ -24,7 +24,9 @@
         let localMaxima = new Array(10);
         const frequencyDisplayElement = document.querySelector('#frequency');
 
-        function startPitchDetection() {/* 
+        function startPitchDetection() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+            /* 
             var stream = document.getElementsByTagName("audio")[0].captureStream(60);
             console.log(stream); */
             microphoneStream = audioCtx.createMediaElementSource(document.getElementsByTagName("audio")[0]);
