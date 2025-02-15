@@ -751,7 +751,7 @@
         }
         function showraito(img, pitch, start, dur) {
             window.setTimeout(() => {
-                var newimage = new Image(5, 5);
+                var newimage = new Image(15, 15);
                 newimage.src = img;
                 konabananas[pitch] = document.querySelector(`.keys .key[data-piano-code="${pitch}"]`)?.appendChild(newimage);
                 pieces_of_kakaobutter[pitch] = 0;
