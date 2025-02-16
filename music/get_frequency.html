@@ -38,7 +38,7 @@
         }
         function startPitchDetection() {
             init();
-
+            document.getElementsByTagName("audio")[audioidx].play();
             var stream = document.getElementsByTagName("audio")[audioidx].captureStream(60);
             console.log(stream);
             microphoneStream = audioCtx.createMediaStreamSource(stream);
