@@ -1056,6 +1056,7 @@
             if (document.querySelector('.wood_panel').clientWidth < document.querySelector('.wood_panel').clientHeight) {
                 document.querySelector('.flexdiv').style.setProperty('display', 'block');
                 document.querySelector('.wood_panel').style.setProperty('width', document.querySelector('.piano').clientWidth + 'px');
+                document.querySelector('.wood_panel').style.setProperty('height', document.querySelector('.piano').clientWidth / 16 * 9 + 'px');
             } else {
                 document.querySelector('.wood_panel').style.setProperty('width', (parseFloat(getComputedStyle(document.querySelector('.flexdiv')).width) - parseFloat(getComputedStyle(document.querySelector('.piano')).width)) + 'px');
             }
