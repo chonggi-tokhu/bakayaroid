@@ -161,8 +161,18 @@
                 <div class="header">
                     <h3>가루바나나 & 카카오버터! 우리들의 드러그, 바카야로이드를 라이토군이 직접 보여줍니다!</h3>
                 </div>
-                <div class="input-group">
-                    <p><span style="font-size:64%;font-weight:bold;">직접연주 설정 및 환경설정</span></p>
+                <div style="display: flex;">
+                    <p role="button"
+                        onclick="var settings_1 = document.getElementById('settings_1');settings_1.style.display=settings_1.style.display==='none'?'flex':'none';">
+                        <span style="font-size:64%;font-weight:bold;">직접연주 설정 및 환경설정</span>
+                    </p>
+                    <span> | </span>
+                    <p role="button"
+                        onclick="var settings_1 = document.getElementById('settings_2');settings_1.style.display=settings_1.style.display==='none'?'flex':'none';">
+                        <span style="font-size:75%;">자동피아노 설정</span>
+                    </p>
+                </div>
+                <div class="input-group" id="settings_1" style="display: none;">
                     <input type="text" name="img" id="img" placeholder="background image">
                     <button class="btn btn-primary" id="setimg">set bg image</button>
                     <button class="btn btn-primary" onclick="document.querySelector('.piano_wrapper').focus();">연주
@@ -172,8 +182,7 @@
                     <p id="startCapture" style="color: #20ff60;">녹화 시작</p>
                     <p id="stopCapture" style="color: #ff2060;">녹화 중지</p>
                 </div>
-                <div class="input-group">
-                    <p><span style="font-size:75%;">자동피아노 설정</span></p>
+                <div class="input-group" id="settings_2" style="display: none;">
                     <label><input type="file" name="myfile" id="myfile" style="display: none;"><button
                             class="btn btn-primary"
                             onclick="this.parentElement.querySelector('input[type=file]').click();">파일
