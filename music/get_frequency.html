@@ -57,7 +57,7 @@
                 logs[audioidx].innerHTML += `<li>${pitch} - ${logtime}</li>`;
                 logtime += 0.3;
             }, 300);
-            logs[audioidx].addEventListener("ended", (ev) => {
+            document.getElementsByTagName("audio")[audioidx].addEventListener("ended", (ev) => {
                 clearInterval(myid);
             });
         }
