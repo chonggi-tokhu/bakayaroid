@@ -57,12 +57,16 @@
                 logs[audioidx].innerHTML += `<li>${pitch} - ${logtime}</li>`;
                 logtime += 0.3;
             }, 300);
+            logs[audioidx].addEventListener("ended", (ev) => {
+                clearInterval(myid);
+            });
         }
+        /* 
         logs.forEach((val, idx, arr) => {
             val.addEventListener("ended", (ev) => {
                 clearInterval(myid);
             });
-        });
+        }); */
         function getAutocorrolatedPitch() {
             // First: autocorrolate the signal
 
