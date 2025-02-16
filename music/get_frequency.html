@@ -26,6 +26,7 @@
         var audioData = null;
         var corrolatedSignal = null;
         var localMaxima = new Array(10);
+        var myid = null;
         const frequencyDisplayElement = document.querySelector('#frequency');
         var logtime = 0;
         var logs = [document.getElementById("frequencylog"), document.getElementById("frequencylog_2")];
@@ -47,7 +48,7 @@
             audioData = new Float32Array(analyserNode.fftSize);
             corrolatedSignal = new Float32Array(analyserNode.fftSize);
 
-            setInterval(() => {
+            myid = setInterval(() => {
                 analyserNode.getFloatTimeDomainData(audioData);
 
                 var pitch = getAutocorrolatedPitch();
@@ -57,7 +58,11 @@
                 logtime += 0.3;
             }, 300);
         }
-
+        logs.forEach((val, idx, arr) => {
+            val.addEventListener("ended", (ev) => {
+                clearInterval(myid);
+            });
+        });
         function getAutocorrolatedPitch() {
             // First: autocorrolate the signal
 
