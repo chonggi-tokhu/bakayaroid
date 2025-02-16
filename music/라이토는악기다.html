@@ -1046,7 +1046,16 @@
             document.querySelector('.piano').style.setProperty('--new-width', document.querySelector('.piano_wrapper').clientWidth + 'px');
             document.querySelector('.wood_panel').style.setProperty('--scaleX', window.innerWidth / document.querySelector('.piano_wrapper').clientWidth);
             document.querySelector('.wood_panel').style.setProperty('--new-width', document.querySelector('.piano_wrapper').clientWidth + 'px');
-            document.querySelector('.wood_panel').style.setProperty('width', (parseFloat(getComputedStyle(document.querySelector('.flexdiv')).width) - parseFloat(getComputedStyle(document.querySelector('.piano')).width)) + 'px')
+
+            document.querySelector(':root').style.setProperty('--piano-outer-height', document.querySelector('.piano_wrapper').clientHeight + 'px');
+            document.querySelector(':root').style.setProperty('--panel-height', document.querySelector('.wood_panel').clientHeight + 'px');
+            document.querySelector(':root').style.setProperty('--panel-width', document.querySelector('.wood_panel').clientWidth + 'px');
+            if (document.querySelector('.wood_panel').clientWidth < document.querySelector('.wood_panel').clientHeight) {
+                document.querySelector('.flexdiv').style.setProperty('display', 'block');
+                document.querySelector('.wood_panel').style.setProperty('width', document.querySelector('.piano').clientWidth + 'px');
+            } else {
+                document.querySelector('.wood_panel').style.setProperty('width', (parseFloat(getComputedStyle(document.querySelector('.flexdiv')).width) - parseFloat(getComputedStyle(document.querySelector('.piano')).width)) + 'px');
+            }
         });
         const displayMediaOptions = {
             video: {
