@@ -7,10 +7,12 @@
 </head>
 
 <body>
-    <audio src="../FluidR3_GM/bakayaro-mp3/C3.mp3" controls loop></audio>
-    <audio src="../FluidR3_GM/bakayaro-mp3/B2.mp3" controls loop></audio>
+    <audio src="../FluidR3_GM/bakayaro-mp3/C3.mp3" controls onended="logtime=0;"></audio>
+    <audio src="../FluidR3_GM/bakayaro-mp3/B2.mp3" controls onended="logtime=0;"></audio>
     <h1 onclick="audioidx=audioidx===0?1:0;">Frequency (Hz)</h1>
     <h2 id="frequency">0.0</h2>
+    <ul id="frequencylog"></ul>
+    <ul id="frequencylog_2"></ul>
     <div>
         <button onclick="startPitchDetection()">
             Start Pitch Detection
@@ -25,6 +27,8 @@
         var corrolatedSignal = null;
         var localMaxima = new Array(10);
         const frequencyDisplayElement = document.querySelector('#frequency');
+        var logtime = 0;
+        var logs = [document.getElementById("frequencylog"), document.getElementById("frequencylog_2")];
         function init() {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             microphoneStream = null;
@@ -49,6 +53,8 @@
                 var pitch = getAutocorrolatedPitch();
 
                 frequencyDisplayElement.innerHTML = `${pitch}`;
+                logs[audioidx].innerHTML += `<li>${pitch} - ${logtime}</li>`;
+                logtime += 0.3;
             }, 300);
         }
 
