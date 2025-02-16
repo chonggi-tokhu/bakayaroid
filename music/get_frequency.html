@@ -7,8 +7,9 @@
 </head>
 
 <body>
-    <audio src="../FluidR3_GM/light_yagami-mp3/C4.mp3" controls loop></audio>
-    <h1>Frequency (Hz)</h1>
+    <audio src="../FluidR3_GM/bakayaro-mp3/C3.mp3" controls loop></audio>
+    <audio src="../FluidR3_GM/bakayaro-mp3/B2.mp3" controls loop></audio>
+    <h1 onclick="audioidx=audioidx===0?1:0;">Frequency (Hz)</h1>
     <h2 id="frequency">0.0</h2>
     <div>
         <button onclick="startPitchDetection()">
@@ -16,6 +17,7 @@
         </button>
     </div>
     <script>
+        var audioidx = 0;
         var audioCtx = null;
         var microphoneStream = null;
         var analyserNode = null;
@@ -33,7 +35,7 @@
         function startPitchDetection() {
             init();
 
-            var stream = document.getElementsByTagName("audio")[0].captureStream(60);
+            var stream = document.getElementsByTagName("audio")[audioidx].captureStream(60);
             console.log(stream);
             microphoneStream = audioCtx.createMediaStreamSource(stream);
             microphoneStream.connect(analyserNode);
