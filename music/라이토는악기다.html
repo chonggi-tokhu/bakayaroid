@@ -1069,6 +1069,36 @@
             } else {
                 document.querySelector('.wood_panel').style.setProperty('width', (parseFloat(getComputedStyle(document.querySelector('.flexdiv')).width) - parseFloat(getComputedStyle(document.querySelector('.piano')).width)) + 'px');
             }
+            function getd(h, r, n) {
+                if (n <= 0) {
+                    return 0;
+                }
+                return 2 * (Math.atan(h / ((2 * r * n) + r)) - getd(h, r, n - 1));
+            }
+            function getd2(h, r, n) {
+                return (((2 * r * n) ** 2) + (h ** 2)) ** (1 / 2);
+            }
+            function solve_quadratic_equation_plus(a, b, c) {
+                return [(-b + ((b ** 2 - (4 * a * c)) ** (1 / 2))) / (2 * a)]
+            }
+            document.querySelectorAll('.keys>div').forEach((el, idx, arr) => {
+                var ll = 5;
+                var d = getd(5, 0.5, 0);
+                el.querySelectorAll('.key').forEach((el1, idx1, arr1) => {
+                    d = getd(5, 0.5, idx1)
+                    //var a = Math.cos(d/2)*ll;
+                    //var b = Math.sin(d / 2) * ll;
+                    var a = Math.tan(d);
+                    var r = 0.5;
+                    var n = idx0 + 0.5;
+                    var ap = 1 - (a ** 2);
+                    var bp = -(4 * r * n + 10);
+                    var cp = -(25 + (4 * (r ** 2) * (n ** 2)) - (r ** 2));
+                    var x = solve_quadratic_equation_plus(ap, bp, cp);
+                    el1.style.background = ` radial-gradient(farthest-corner at ${(x * 100) / (r * 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black);`;
+                    ll = getd2(5, 0.5, idx1 + 1);
+                })
+            });
         });
         const displayMediaOptions = {
             video: {
