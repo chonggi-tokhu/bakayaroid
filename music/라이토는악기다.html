@@ -32,7 +32,8 @@
             width: 3rem;
             height: 3rem;
             border-radius: 50%;
-            background: radial-gradient(white, lightgrey, grey, darkgrey, black);
+            background-image: radial-gradient(white, lightgrey, grey, darkgrey, black);
+            background-repeat: no-repeat;
         }
 
         .keys .key img {
@@ -785,7 +786,7 @@
                 console.log(thisnote.when * 1000 * (_1Minute / _PIANOTEMPO));
                 showraito('../files/라이토군1.gif', pitchnumbers[thisnote.pitch], thisnote.when * 1000 * (_1Minute / _PIANOTEMPO), (thisnote.duration * 1000));
                 window.setTimeout(function () {
-                    var newplaying = instrument0.play(pitchnumbers[thisnote.pitch], 0, { sustain: (sustainparam) ? 8 : 0.9 });
+                    var newplaying = instrument0.play(pitchnumbers[thisnote.pitch], 0, { sustain: (sustainparam && sustain) ? 8 : 0.9 });
                     bool2 = false;
                     currKeys2[pitchnumbers[thisnote.pitch]] = newplaying.id;
                     get_key_el(pitchnumbers[thisnote.pitch]).classList.add("highlight");
@@ -1073,7 +1074,7 @@
                 if (n <= 0) {
                     return 0;
                 }
-                return 2 * (Math.atan(h / ((2 * r * n) + r)) - getd(h, r, n - 1));
+                return 2 * ((Math.atan(((2 * r * n) + r) / h)) - getd(h, r, n - 1));
             }
             function getd2(h, r, n) {
                 return (((2 * r * n) ** 2) + (h ** 2)) ** (1 / 2);
@@ -1081,22 +1082,30 @@
             function solve_quadratic_equation_plus(a, b, c) {
                 return (-b + ((b ** 2 - (4 * a * c)) ** (1 / 2))) / (2 * a);
             }
+            function round2(a, b) {
+                return Math.round(a * (10 ** b)) / (10 ** b);
+            }
             document.querySelectorAll('.keys>div').forEach((el, idx, arr) => {
                 var ll = 5;
-                var d = getd(5, 0.5, 0);
+                var d = 0;
                 el.querySelectorAll('.key').forEach((el1, idx1, arr1) => {
-                    d = getd(5, 0.5, idx1)
+                    d = getd(5, 0.5, idx1);
                     //var a = Math.cos(d/2)*ll;
                     //var b = Math.sin(d / 2) * ll;
-                    var a = Math.tan(d);
+                    //var a = 1 / Math.tan(d);
+                    var a = 5 / (0.5 * 2 * idx1 + 0.5);
+                    console.log(idx1 + '\n' + a);
+                    console.log(a);
                     var r = 0.5;
                     var n = idx1 + 0.5;
-                    var ap = 1 - (a ** 2);
-                    var bp = -(4 * r * n + 10);
-                    var cp = -(25 + (4 * (r ** 2) * (n ** 2)) - (r ** 2));
+                    var ap = 1 + (a ** 2);
+                    var bp = (4 * r * n + (10 * a));
+                    var cp = (-25 - (4 * (r ** 2) * (n ** 2)) + (r ** 2));
                     var x = solve_quadratic_equation_plus(ap, bp, cp);
-                    el1.style.background = `radial-gradient(farthest-corner at ${((x - (r * 2 * n - 1)) * 100) / (r * 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black);`;
-                    console.log(`radial-gradient(farthest-corner at ${((x - (r * 2 * n - 1) + 1) * 100) / (r * 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black);`);
+                    console.log('aaa\n' + x);
+                    //el1.style.background = `radial-gradient( white, lightgrey, grey, darkgrey, black)`;
+                    el1.style.setProperty('background-position', `${round2(((x - (r * 2 * nZ)) * 100) / (r * 2), 2)}% 50%`);
+                    console.log(`radial-gradient(at ${round2(((x - (r * 2 * n - 1)) * 100) / (r * 2), 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black)`);
                     ll = getd2(5, 0.5, idx1 + 1);
                 })
             });
