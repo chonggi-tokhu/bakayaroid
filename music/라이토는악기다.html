@@ -759,7 +759,7 @@
                 document.querySelector('.wood_panel').style.backgroundImage = `url('../files/라이토군0.gif')`;
             }, start);
             window.setTimeout(() => { konabananas[pitch].src = "../files/라이토군2.gif"; }, start + dur * 0.75);
-            window.setTimeout(() => { konabananas[pitch]?.remove(); konabananas[pitch] = null; delete konabananas[pitch]; if (Object.keys(konabananas).length === 0 && Object.keys(pieces_of_kakaobutter).length === 0) { document.querySelector('.wood_panel').style.backgroundImage = ''; } }, start + dur);
+            window.setTimeout(() => { konabananas[pitch]?.remove(); document.querySelector(`.keys .key[data-piano-code="${pitch}"]`)?.querySelectorAll('img').forEach((el, idx, par) => { el.remove(); }); konabananas[pitch] = null; delete konabananas[pitch]; if (Object.keys(konabananas).length === 0/*  || Object.keys(pieces_of_kakaobutter).length === 0 */) { document.querySelector('.wood_panel').style.backgroundImage = ''; } }, start + dur);
         }
         var playmidi2 = function (track, idx, bar, sustainparam, instrumentid) {
             if (stopbool === true) {
