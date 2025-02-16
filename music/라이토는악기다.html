@@ -1095,7 +1095,8 @@
                     var bp = -(4 * r * n + 10);
                     var cp = -(25 + (4 * (r ** 2) * (n ** 2)) - (r ** 2));
                     var x = solve_quadratic_equation_plus(ap, bp, cp);
-                    el1.style.background = ` radial-gradient(farthest-corner at ${(x * 100) / (r * 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black);`;
+                    el1.style.background = `radial-gradient(farthest-corner at ${(x * 100) / (r * 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black);`;
+                    console.log(`radial-gradient(farthest-corner at ${(x * 100) / (r * 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black);`);
                     ll = getd2(5, 0.5, idx1 + 1);
                 })
             });
