@@ -1118,7 +1118,7 @@
                     var x = solve_quadratic_equation_plus(ap, bp, cp);
                     console.log('aaa\n' + x);
                     //el1.style.background = `radial-gradient( white, lightgrey, grey, darkgrey, black)`;
-                    el1.style.setProperty('background-position', `${round2(((x - (r * 2 * nZ)) * 100) / (r * 2), 2)}% 50%`);
+                    el1.style.setProperty('background-position', `${round2(((x - (r * 2 * n)) * 100) / (r * 2), 2)}% 50%`);
                     console.log(`radial-gradient(at ${round2(((x - (r * 2 * n - 1)) * 100) / (r * 2), 2)/* idx/ document.querySelectorAll('.keys>div').length */}% 50%, white, lightgrey, grey, darkgrey, black)`);
                     ll = getd2(5, 0.5, idx1 + 1);
                 })
