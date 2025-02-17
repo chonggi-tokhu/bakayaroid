@@ -778,7 +778,7 @@
         var thisnotes = {};
         var sustainparams = {};
         var sustains = {};
-        function myfunc(thisnotefunc, sustainparamfunc, sustainfunc) {
+        function myfunc(instrument0, thisnotefunc, sustainparamfunc, sustainfunc) {
             var thisnote = thisnotefunc();
             var sustainparam = sustainparamfunc();
             var sustain = sustainfunc;
@@ -845,7 +845,7 @@
                 var note_name = thisnote.pitch;
                 thisnotes[note_name] = thisnote;
                 window.setTimeout(function () {
-                    myfunc(() => { return thisnotes[note_name]; }, () => { return sustainparam }, () => { return sustain });
+                    myfunc(instrument0, () => { return thisnotes[note_name]; }, () => { return sustainparam }, () => { return sustain });
                 }, thisnote.when * 1000 * (_1Minute / _PIANOTEMPO));
                 window.setTimeout(function () {
                     delete thisnotes[note_name];
