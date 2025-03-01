@@ -1111,18 +1111,18 @@
             });
         });
         const displayMediaOptions = {
-            video: {
-                displaySurface: "tab",
-            },
-            audio: {
-                echoCancellation: true,
-                noiseSuppression: true,
-                sampleRate: 44100,
-                suppressLocalAudioPlayback: true,
-            },
-            surfaceSwitching: "include",
-            selfBrowserSurface: "exclude",
-            systemAudio: "exclude",
+    video: {
+        displaySurface: "tab",
+    },
+    audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        sampleRate: 44100,
+        suppressLocalAudioPlayback: true,
+    },
+    surfaceSwitching: "include",
+    selfBrowserSurface: "include",
+    systemAudio: "include",
         };
         var videoElem = document.querySelector('video#myvideo');
         var bool0 = false;
