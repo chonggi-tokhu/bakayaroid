@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+       /*var xhr = new XMLHttpRequest();
+ xhr.open("GET", '', true);
+ console.log('xhr.response: ', xhr.response);
+ console.log('xhr.responseText: ', xhr.responseText);
+ console.log('xhr.responseXML: ', xhr.responseXML);
+ document.write('<p>xhr: ' + xhr + '</p>');
+ xhr.send();*/
+      self.addEventListener("fetch",(ev)=>{
+        if (ev.request.method!=="GET"){
+          return;
+        }
+        ev.respondWith(new Response("HELLO WORLD!",{status:200, statusText:"hello world"}));
+      });
+    </script>
+  </body>
+</html>
