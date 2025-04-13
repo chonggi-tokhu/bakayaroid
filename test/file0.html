@@ -13,12 +13,20 @@
  console.log('xhr.responseXML: ', xhr.responseXML);
  document.write('<p>xhr: ' + xhr + '</p>');
  xhr.send();*/
-      self.addEventListener("fetch",(ev)=>{
-        if (ev.request.method!=="GET"){
-          return;
-        }
-        ev.respondWith(new Response("HELLO WORLD!",{status:200, statusText:"hello world"}));
-      });
+      self.addEventListener("fetch", (event) => {
+  // Let the browser do its default thing
+  // for non-GET requests.
+  if (event.request.method !== "GET") return;
+
+  // Prevent the default, and handle the request ourselves.
+  event.respondWith(
+    (async () => {
+      // If we didn't find a match in the cache, use the network.
+      return new Response(new Blob(["hello world"],{type:"text/html"}),{status:200,statusText:"Helloworld!"});
+    })(),
+  );
+});
+
     </script>
   </body>
 </html>
