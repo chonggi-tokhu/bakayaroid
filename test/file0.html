@@ -22,7 +22,7 @@
   event.respondWith(
     (async () => {
       // If we didn't find a match in the cache, use the network.
-      return new Response(new Blob(["hello world"],{type:"text/html"}),{status:200,statusText:"Helloworld!"});
+      return new Response(new Blob(["hello world"],{type:"text/html"}),{status:404,statusText:"404 not found"});
     })(),
   );
 });
