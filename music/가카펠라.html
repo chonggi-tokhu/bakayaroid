@@ -942,7 +942,7 @@
                                     }
                                 }
                                 sustain = val1.sustain;
-                                specialvar = playmidi2(idx, idx1, withbar, val1.sustain && instrumentfunc().split(',')[idx0].includes('piano')||instrumentfunc().split(',')[idx0].includes('p2mb'), idx0);
+                                specialvar = playmidi2(idx, idx1, withbar, val1.sustain && (instrumentfunc().split(',')[idx0].includes('piano')||instrumentfunc().split(',')[idx0].includes('p2mb')), idx0);
                                 currentTrackIdx = specialvar[0];
                                 currentNoteIdx = specialvar[1];
                                 currentNotesIdx[currentTrackIdx] = currentNoteIdx;
