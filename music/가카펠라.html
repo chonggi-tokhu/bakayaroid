@@ -1006,11 +1006,13 @@
                     if (val) {
                         instrumentnames.push(val.name);
                         acs.push(new AudioContext());
+                    currKeys2Arr.push({});
                     }
                 });
             } else {
                 instrumentnames.forEach((val,idx,arr)=>{
                     acs.push(new AudioContext());
+                    currKeys2Arr.push({});
                 })
             }
             instrumentnames.forEach((val,idx,arr) => {
