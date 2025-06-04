@@ -1008,6 +1008,10 @@
                         acs.push(new AudioContext());
                     }
                 });
+            } else {
+                instrumentnames.forEach((val,idx,arr)=>{
+                    acs.push(new AudioContext());
+                })
             }
             instrumentnames.forEach((val,idx,arr) => {
                 Soundfont.instrument(acs[idx], val).then(function (instrumentnow) {
