@@ -506,6 +506,7 @@
         ac.length = 50;
         var currKeys = [];
         var currKeys2 = {};
+        var currKeys2Arr=[];
         function get_key_el(note) {
             return document.querySelector('.keys .key[data-piano-code="' + note + '"]');
         }
@@ -788,7 +789,8 @@
                 window.setTimeout(function () {
                     var newplaying = instrument0.play(pitchnumbers[thisnote.pitch], 0, { sustain: (sustainparam && sustain) ? 8 : 0.9 });
                     bool2 = false;
-                    currKeys2[pitchnumbers[thisnote.pitch]] = newplaying.id;
+                    //currKeys2[pitchnumbers[thisnote.pitch]] = newplaying.id;
+                    currKeys2Arr[instrumentid][pitchnumbers[thisnote.pitch]]=newplaying.id;
                     get_key_el(pitchnumbers[thisnote.pitch]).classList.add("highlight");
                     if (sustainparam) {
                         get_key_el(pitchnumbers[thisnote.pitch]).classList.add("pedal");
@@ -844,8 +846,11 @@
                     get_key_el(pitchnumbers[thisnote.pitch]).classList.remove("highlight");
                     bool2 = true;
                     currKeys.splice(currKeys.indexOf(pitchnumbers[thisnote.pitch]));
-                    instrument.stop(0, [currKeys2[pitchnumbers[thisnote.pitch]]]);
-                    currKeys2[pitchnumbers[thisnote.pitch]] = false;
+                    //instrument.stop(0, [currKeys2[pitchnumbers[thisnote.pitch]]]);
+                    instrument.stop(0, [currKeys2Arr[instrumentid][pitchnumbers[thisnote.pitch]]]);
+                    //acoustic_grand_piano,cello,p2mb
+                    //currKeys2[pitchnumbers[thisnote.pitch]] = false;
+                    currKeys2Arr[instrumentid][pitchnumbers[thisnote.pitch]] = false;
                     if (bar) {
                         if ((currKeys2[pitchnumbers[thisnote.pitch]] == false && (pitchnumbers[thisnote.pitch] == 'B3' || thisnote.pitch == 58)) && document.querySelector('.key.key_notebar[data-piano-code="B3"] *') instanceof HTMLElement) {
                             document.querySelector('.key.key_notebar[data-piano-code="B3"] *').remove();
@@ -887,6 +892,7 @@
             bool2 = true;
             currKeys = [];
             currKeys2 = {};
+            currKeys2Arr=[];
             midi_reader = null;
             pedal = 0;
             song = {};
