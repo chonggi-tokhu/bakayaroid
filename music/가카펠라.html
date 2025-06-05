@@ -998,9 +998,9 @@
         }
         change_instrument = () => {
             instruments = [];
-            instrumentnames = instrumentfunc().split(',');
             instrumentsettings = [];
-            resetvars();
+            resetvars();.
+            instrumentnames = instrumentfunc().split(',');
             instrumentsettings = document.getElementById("instrumentJSON").value ? JSON.parse(document.getElementById("instrumentJSON").value) : [];
             if (instrumentsettings instanceof Array && instrumentsettings.length > 0) {
                 instrumentnames = [];
