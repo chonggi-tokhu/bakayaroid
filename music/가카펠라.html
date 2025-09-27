@@ -943,7 +943,7 @@
                                         console.log(val1.when);
                                     }
                                 }
-                                sustain = val1.sustain;
+                                sustain = val1.sustain || instrumentsettings[idx0]?.sustain;
                                 specialvar = playmidi2(idx, idx1, withbar, val1.sustain && (instrumentfunc().split(',')[idx0].includes('piano') || instrumentfunc().split(',')[idx0].includes('2mb')), idx0);
                                 currentTrackIdx = specialvar[0];
                                 currentNoteIdx = specialvar[1];
@@ -978,7 +978,7 @@
                                         console.log(val1.when);
                                     }
                                 }
-                                sustain = val1.sustain;
+                                sustain = val1.sustain || instrumentsettings[idx]?.sustain;
                                 specialvar = playmidi2(i0j, i1j, withbar, sustain, idx);
                                 currentTrackIdx = specialvar[0];
                                 currentNoteIdx = specialvar[1];
