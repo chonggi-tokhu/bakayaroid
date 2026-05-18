@@ -780,7 +780,7 @@
             window.setTimeout(() => { konabananas[pitch].src = "../files/p2mb.gif"; document.querySelector('.wood_panel').style.backgroundImage = `url('../files/p2mb.gif')`; }, start + dur * 0.75);
             window.setTimeout(() => { konabananas[pitch]?.remove(); document.querySelector(`.keys .key[data-piano-code="${pitch}"]`)?.querySelectorAll('img').forEach((el, idx, par) => { el.remove(); }); konabananas[pitch] = null; delete konabananas[pitch]; if (Object.keys(konabananas).length === 0/* || Object.keys(pieces_of_kakaobutter).length === 0 */) { document.querySelector('.wood_panel').style.backgroundImage = ''; } }, start + dur);
         }
-        var playmidi2 = function (track, idx, bar, sustainparam, instrumentid) {
+        var playmidi2 = function (track, idx, bar, sustainparam, instrumentid,{gainparam}={gainparam:1}) {
             if (stopbool === true) {
                 console.log(track + idx);
                 return [track, idx] || false;
@@ -791,7 +791,7 @@
                 console.log(thisnote.when * 1000 * (_1Minute / _PIANOTEMPO));
                 showraito('../files/p2mb.gif', pitchnumbers[thisnote.pitch], thisnote.when * 1000 * (_1Minute / _PIANOTEMPO), (thisnote.duration * 1000));
                 window.setTimeout(function () {
-                    var newplaying = instrument0.play(pitchnumbers[thisnote.pitch], 0, { sustain: (sustainparam && sustain) ? (instrumentnames[instrumentid].includes("p2mb")) ?12.5 : 7.5 : 0.9 });
+                    var newplaying = instrument0.play(pitchnumbers[thisnote.pitch], 0, { sustain: (sustainparam && sustain) ? (instrumentnames[instrumentid].includes("p2mb")) ?12.5 : 7.5 : 0.9, gain:gainparam });
                     bool2 = false;
                     //currKeys2[pitchnumbers[thisnote.pitch]] = newplaying.id;
                     currKeys2Arr[instrumentid][pitchnumbers[thisnote.pitch]]=newplaying.id;
@@ -944,7 +944,7 @@
                                     }
                                 }
                                 sustain = val1.sustain || instrumentsettings[idx0]?.sustain;
-                                specialvar = playmidi2(idx, idx1, withbar, val1.sustain && (instrumentfunc().split(',')[idx0].includes('piano') || instrumentfunc().split(',')[idx0].includes('2mb')), idx0);
+                                specialvar = playmidi2(idx, idx1, withbar, val1.sustain && (instrumentfunc().split(',')[idx0].includes('piano') || instrumentfunc().split(',')[idx0].includes('2mb')), idx0,{gainparam:instrumentsettings[idx0]?.gain||1});
                                 currentTrackIdx = specialvar[0];
                                 currentNoteIdx = specialvar[1];
                                 currentNotesIdx[currentTrackIdx] = currentNoteIdx;
